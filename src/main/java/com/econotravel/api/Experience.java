@@ -66,17 +66,5 @@ public class Experience{
         this.duration = duration;
         this.tag = tag;
 
-
-        @Override
-        public String toString() {
-            return "Experience{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", price='" + price + '\'' +
-                    ", duration='" + duration + '\'' +
-                    ", tag='" + tag + '\'' +
-                    '}';
-
-
         }
     }
