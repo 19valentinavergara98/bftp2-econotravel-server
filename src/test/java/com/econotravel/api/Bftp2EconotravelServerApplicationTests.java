@@ -14,9 +14,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -47,12 +48,12 @@ class Bftp2EconotravelServerApplicationTests {
     }
 
     private void addSampleExperiences() {
-        List<Experience> movies = List.of(
+        List<Experience> experiences = List.of(
                 new Experience("Paseo por el Montseny"),
                 new Experience("Visita a la sagrada familia")
         );
 
-        experienceRepository.saveAll(movies);
+        experienceRepository.saveAll(experiences);
     }
 
     @Test
@@ -70,4 +71,34 @@ class Bftp2EconotravelServerApplicationTests {
         ));
     }
 
+    @Test
+    void editNewExperiences() throws Exception {
+        // Dado que tenemos una experiencia que ya esta creada
+        Experience experience = experienceRepository.save(new Experience("Paseo en Bici por el Montseny", "30", "4", "montaña, bicicleta, excursión larga"));
+        //Cuando editamos la info enviandola al servidor
+        mockMvc.perform(put("/experiences/" + experience.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("{\"name\": \"Paseo en Bici por el Montseny\",\"price\": \"20\",\"duration\": \"4\",\"tag\": \"montaña, bicicleta, excursión larga\" }"))
+                .andExpect(status().isOk());
+
+
+        // entonces vere que la experiencia se ha actualizado en la base de datos
+
+        var experiences = experienceRepository.findAll();
+        assertThat(experiences, contains(allOf(
+                hasProperty("name", is("Paseo en Bici por el Montseny")),
+                hasProperty("price", is("20"))
+        )));
+
+
+    }
+
+    // TEST DE DELETE
+    // Dado que tengo una experiencia guardada con id "ïd"
+    // cuando hago DELETE /experiences/"ïd"
+    // entonces esta experiencia ya no debe salir en la lista de experiencias
+
+
 }
+
+

@@ -30,4 +30,12 @@ public class ExperienceController {
         return experienceRepository.save(experience);
     }
 
+
+    @GetMapping("/experiences/{id}/edit")
+    String editExperience(Model model, @PathVariable Long id) {
+        Experience experience = experienceRepository.findById(id).get();
+        model.addAttribute("experience", experience);
+        model.addAttribute("name", "Edit experience");
+        return "experiences/edit";
+    }
 }
