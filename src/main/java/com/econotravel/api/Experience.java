@@ -12,11 +12,14 @@ public class Experience{
 
     private String name;
 
+    private String description;
+
     private double price;
 
     private String duration;
 
     private String tag;
+
 
     public Experience() {
     }
@@ -41,6 +44,10 @@ public class Experience{
         this.name = name;
     }
 
+    public String getDescription(){return description;}
+
+    public void setDescription(String description){this.description=description;}
+
     public double getPrice() {return price;
     }
 
@@ -58,14 +65,20 @@ public class Experience{
         return tag;
     }
 
+   // public String getImage(){return image;}
+
+    //public void setImage(String image){ this.image = image;}
+
     public void setTag(String tag) {
         this.tag= tag;
     }
-    public Experience( String name,double price, String duration, String tag) {
+    public Experience( String name,String description,double price, String duration, String tag) {
         this.name = name;
+        this.description=description;
         this.price = price;
         this.duration = duration;
         this.tag = tag;
+        //this.image=image;
 
         }
     @Override
