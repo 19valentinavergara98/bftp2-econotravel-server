@@ -24,6 +24,10 @@ public class ExperienceController {
         return experienceRepository.findAll();
 
     }
+    @GetMapping("/{id}")
+    public Experience getExperience(@PathVariable Long id) {
+        return experienceRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
 
     @PostMapping
     public Experience createExperience(@RequestBody Experience experience) {

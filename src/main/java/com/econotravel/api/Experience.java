@@ -1,6 +1,7 @@
 package com.econotravel.api;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name="experiences")
@@ -67,4 +68,28 @@ public class Experience{
         this.tag = tag;
 
         }
+    @Override
+    public String toString() {
+        return "Experience{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price='" + price + '\'' +
+                ", duration='" + duration + '\'' +
+                ", tag'" + tag + '\'' +
+                '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Experience experience = (Experience) o;
+        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag);
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, price, duration, tag);
+    }
+}
+
