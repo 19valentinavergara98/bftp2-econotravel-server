@@ -12,7 +12,7 @@ public class Experience{
 
     private String name;
 
-    private String price;
+    private double price;
 
     private String duration;
 
@@ -41,10 +41,10 @@ public class Experience{
         this.name = name;
     }
 
-    public String  getPrice() {return price;
+    public double getPrice() {return price;
     }
 
-    public void setPrice(String price) {this.price = price;
+    public void setPrice(double price) {this.price = price;
     }
     public String getDuration() {
         return duration;
@@ -61,7 +61,7 @@ public class Experience{
     public void setTag(String tag) {
         this.tag= tag;
     }
-    public Experience( String name,String price, String duration, String tag) {
+    public Experience( String name,double price, String duration, String tag) {
         this.name = name;
         this.price = price;
         this.duration = duration;
