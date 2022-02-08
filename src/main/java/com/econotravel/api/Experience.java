@@ -20,7 +20,7 @@ public class Experience{
 
     private String tag;
 
-    private String image;
+
 
     public Experience() {
     }
@@ -66,20 +66,18 @@ public class Experience{
         return tag;
     }
 
-    public String getImage(){return image;}
 
-    public void setImage(String image){ this.image = image;}
 
     public void setTag(String tag) {
         this.tag= tag;
     }
-    public Experience( String name,String description,double price, String duration, String tag, String image) {
+    public Experience( String name,String description,double price, String duration, String tag ) {
         this.name = name;
         this.description=description;
         this.price = price;
         this.duration = duration;
         this.tag = tag;
-        this.image=image;
+
 
         }
     @Override
@@ -91,7 +89,6 @@ public class Experience{
                 ", price='" + price + '\'' +
                 ", duration='" + duration + '\'' +
                 ", tag'" + tag + '\'' +
-                ", image'" + image + '\'' +
                 '}';
     }
     @Override
@@ -99,13 +96,13 @@ public class Experience{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Experience experience = (Experience) o;
-        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(image, experience.image);
+        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, duration, tag, image);
+        return Objects.hash(id, name, description, price, duration, tag);
     }
 }
 
