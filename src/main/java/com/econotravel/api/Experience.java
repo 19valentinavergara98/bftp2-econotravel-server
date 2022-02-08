@@ -20,6 +20,7 @@ public class Experience{
 
     private String tag;
 
+    private String image;
 
     public Experience() {
     }
@@ -65,20 +66,20 @@ public class Experience{
         return tag;
     }
 
-   // public String getImage(){return image;}
+    public String getImage(){return image;}
 
-    //public void setImage(String image){ this.image = image;}
+    public void setImage(String image){ this.image = image;}
 
     public void setTag(String tag) {
         this.tag= tag;
     }
-    public Experience( String name,String description,double price, String duration, String tag) {
+    public Experience( String name,String description,double price, String duration, String tag, String image) {
         this.name = name;
         this.description=description;
         this.price = price;
         this.duration = duration;
         this.tag = tag;
-        //this.image=image;
+        this.image=image;
 
         }
     @Override
@@ -86,9 +87,11 @@ public class Experience{
         return "Experience{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
                 ", price='" + price + '\'' +
                 ", duration='" + duration + '\'' +
                 ", tag'" + tag + '\'' +
+                ", image'" + image + '\'' +
                 '}';
     }
     @Override
@@ -96,13 +99,13 @@ public class Experience{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Experience experience = (Experience) o;
-        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag);
+        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(image, experience.image);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, duration, tag);
+        return Objects.hash(id, name, description, price, duration, tag, image);
     }
 }
 
