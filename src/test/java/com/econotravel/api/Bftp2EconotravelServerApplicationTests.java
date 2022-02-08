@@ -61,24 +61,24 @@ class Bftp2EconotravelServerApplicationTests {
 
         mockMvc.perform(post("/api/experiences")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"name\": \"Paseo en Bici por el Montseny\"}")
+                .content("{\"name\": \"Paseo en bicicleta por el Montseny\"}")
         ).andExpect(status().is(200));
 
         var experiences = experienceRepository.findAll();
 
         assertThat(experiences, contains(
-                hasProperty("name", is("Paseo en Bici por el Montseny"))
+                hasProperty("name", is("Paseo en bicicleta por el Montseny"))
         ));
     }
 
     @Test
     void editNewExperiences() throws Exception {
         // Dado que tenemos una experiencia que ya esta creada
-        Experience experience = experienceRepository.save(new Experience("Paseo en Bici por el Montseny", "30", "4", "montaña, bicicleta, excursión larga"));
+        Experience experience = experienceRepository.save(new Experience("Paseo en bicicleta por el Montseny", "\"Disfruta de un hermoso paseo en bicicleta por el increíble Parque Natural del Montseny. Una escapada veraniega perfecta para parejas, familias y amigos que nos permitirá conocer nuevos y sorprendentes lugares. El recorrido que os proponemos comienza con una larga subida con algunos descansos, combinando asfalto y pistas anchas, culminando en un mirador con magníficas vistas del Vallés y el mar. Desde aquí continuaremos la bajada combinando senderos, pistas y algún tramo de carretera y terreno mixto para visitar la zona de Santa Fe, donde descubriremos la Ermita y el Bosque de las Secuoyas. Para finalizar, acudiremos al restaurante María Rosa de Palautordera, donde disfrutaremos de una excelente comida casera con butifarra blanca y negra y munxetes del Montseny", 250, "5h", "montaña, bicicleta, excursión larga"));
         //Cuando editamos la info enviandola al servidor
         mockMvc.perform(put("/experiences/" + experience.getId())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"name\": \"Paseo en Bici por el Montseny\",\"price\": \"20\",\"duration\": \"4\",\"tag\": \"montaña, bicicleta, excursión larga\" }"))
+                        .content("{\"name\": \"Paseo en bicicleta por el Montseny\",\"description\": \"Disfruta de un hermoso paseo en bicicleta por el increíble Parque Natural del Montseny. Una escapada veraniega perfecta para parejas, familias y amigos que nos permitirá conocer nuevos y sorprendentes lugares. El recorrido que os proponemos comienza con una larga subida con algunos descansos, combinando asfalto y pistas anchas, culminando en un mirador con magníficas vistas del Vallés y el mar. Desde aquí continuaremos la bajada combinando senderos, pistas y algún tramo de carretera y terreno mixto para visitar la zona de Santa Fe, donde descubriremos la Ermita y el Bosque de las Secuoyas. Para finalizar, acudiremos al restaurante María Rosa de Palautordera, donde disfrutaremos de una excelente comida casera con butifarra blanca y negra y munxetes del Montseny\", price\": \"200\",\"duration\": \"5h\",\"tag\": \"montaña, bicicleta, excursión larga\" }"))
                 .andExpect(status().isOk());
 
 
@@ -86,8 +86,8 @@ class Bftp2EconotravelServerApplicationTests {
 
         var experiences = experienceRepository.findAll();
         assertThat(experiences, contains(allOf(
-                hasProperty("name", is("Paseo en Bici por el Montseny")),
-                hasProperty("price", is("20"))
+                hasProperty("name", is("Paseo en bicicleta por el Montseny")),
+                hasProperty("price", is(200))
         )));
 
 
