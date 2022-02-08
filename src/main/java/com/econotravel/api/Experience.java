@@ -1,17 +1,18 @@
 package com.econotravel.api;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name="experiences")
-public class Experience{
+@Table(name = "experiences")
+public class Experience implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-
+    @Lob
     private String description;
 
     private double price;
@@ -19,8 +20,9 @@ public class Experience{
     private String duration;
 
     private String tag;
-
+    @Lob
     private String image;
+
 
     public Experience() {
     }
@@ -45,15 +47,22 @@ public class Experience{
         this.name = name;
     }
 
-    public String getDescription(){return description;}
-
-    public void setDescription(String description){this.description=description;}
-
-    public double getPrice() {return price;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPrice(double price) {this.price = price;
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public String getDuration() {
         return duration;
     }
@@ -62,26 +71,33 @@ public class Experience{
         this.duration = duration;
     }
 
-    public String  getTag() {
+    public String getTag() {
         return tag;
     }
 
-    public String getImage(){return image;}
-
-    public void setImage(String image){ this.image = image;}
-
     public void setTag(String tag) {
-        this.tag= tag;
+        this.tag = tag;
     }
-    public Experience( String name,String description,double price, String duration, String tag, String image) {
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+
+    public Experience(String name, String description, double price, String duration, String tag, String image) {
         this.name = name;
-        this.description=description;
+        this.description = description;
         this.price = price;
         this.duration = duration;
         this.tag = tag;
-        this.image=image;
+        this.image = image;
 
-        }
+    }
+
     @Override
     public String toString() {
         return "Experience{" +
@@ -94,6 +110,7 @@ public class Experience{
                 ", image'" + image + '\'' +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
