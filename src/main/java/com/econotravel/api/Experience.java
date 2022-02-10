@@ -21,7 +21,7 @@ public class Experience implements Serializable {
 
     private String tag;
     @Lob
-    private String image;
+    private String coverImage;
 
 
     public Experience() {
@@ -55,13 +55,9 @@ public class Experience implements Serializable {
         this.description = description;
     }
 
-    public double getPrice() {
-        return price;
-    }
+    public double getPrice() {return price;}
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
+    public void setPrice(double price) {this.price = price;}
 
     public String getDuration() {
         return duration;
@@ -71,30 +67,24 @@ public class Experience implements Serializable {
         this.duration = duration;
     }
 
-    public String getTag() {
-        return tag;
-    }
+    public String getTag() {return tag;}
 
     public void setTag(String tag) {
         this.tag = tag;
     }
 
-    public String getImage() {
-        return image;
-    }
+    public String getImage() {return coverImage;}
 
-    public void setImage(String image) {
-        this.image = image;
-    }
+    public void setImage(String image) {this.coverImage = image;}
 
 
-    public Experience(String name, String description, double price, String duration, String tag, String image) {
+    public Experience(String name, String description, double price, String duration, String tag, String coverImage) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.duration = duration;
         this.tag = tag;
-        this.image = image;
+        this.coverImage = coverImage;
 
     }
 
@@ -107,7 +97,7 @@ public class Experience implements Serializable {
                 ", price='" + price + '\'' +
                 ", duration='" + duration + '\'' +
                 ", tag'" + tag + '\'' +
-                ", image'" + image + '\'' +
+                ", image'" + coverImage + '\'' +
                 '}';
     }
 
@@ -116,12 +106,12 @@ public class Experience implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Experience experience = (Experience) o;
-        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(image, experience.image);
+        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(coverImage, experience.coverImage);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, duration, tag, image);
+        return Objects.hash(id, name, description, price, duration, tag, coverImage);
     }
 }
