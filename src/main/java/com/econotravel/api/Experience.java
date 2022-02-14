@@ -73,9 +73,9 @@ public class Experience implements Serializable {
         this.tag = tag;
     }
 
-    public String getImage() {return coverImage;}
+    public String getCoverImage() {return coverImage;}
 
-    public void setImage(String image) {this.coverImage = image;}
+    public void setCoverImage(String coverImage) {this.coverImage = coverImage;}
 
 
     public Experience(String name, String description, double price, String duration, String tag, String coverImage) {
@@ -97,7 +97,7 @@ public class Experience implements Serializable {
                 ", price='" + price + '\'' +
                 ", duration='" + duration + '\'' +
                 ", tag'" + tag + '\'' +
-                ", image'" + coverImage + '\'' +
+                ", coverImage'" + coverImage + '\'' +
                 '}';
     }
 
