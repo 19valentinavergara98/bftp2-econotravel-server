@@ -13,6 +13,9 @@ public class Experience implements Serializable {
 
     private String name;
     @Lob
+    private String resume;
+
+    @Lob
     private String description;
 
     private double price;
@@ -47,6 +50,14 @@ public class Experience implements Serializable {
         this.name = name;
     }
 
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -78,8 +89,9 @@ public class Experience implements Serializable {
     public void setCoverImage(String coverImage) {this.coverImage = coverImage;}
 
 
-    public Experience(String name, String description, double price, String duration, String tag, String coverImage) {
+    public Experience(String name, String resume, String description, double price, String duration, String tag, String coverImage) {
         this.name = name;
+        this.resume= resume;
         this.description = description;
         this.price = price;
         this.duration = duration;
@@ -88,30 +100,19 @@ public class Experience implements Serializable {
 
     }
 
-    @Override
-    public String toString() {
-        return "Experience{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price='" + price + '\'' +
-                ", duration='" + duration + '\'' +
-                ", tag'" + tag + '\'' +
-                ", coverImage'" + coverImage + '\'' +
-                '}';
-    }
+
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Experience experience = (Experience) o;
-        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(coverImage, experience.coverImage);
+        return Objects.equals(id, experience.id) && Objects.equals(name, experience.name) && Objects.equals(resume, experience.resume) && Objects.equals(description, experience.description) && Objects.equals(price, experience.price) && Objects.equals(duration, experience.duration) && Objects.equals(tag, experience.tag) && Objects.equals(coverImage, experience.coverImage);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, price, duration, tag, coverImage);
+        return Objects.hash(id, name, resume, description, price, duration, tag, coverImage);
     }
 }
