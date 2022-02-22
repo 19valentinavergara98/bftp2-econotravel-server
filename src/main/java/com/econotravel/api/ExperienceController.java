@@ -21,18 +21,15 @@ public class ExperienceController {
     }
 
     @GetMapping
-    public List<Experience> allExperiences() {
-
-        return experienceRepository.findAll();
-    }
+    public List<Experience> allExperiences() {return experienceRepository.findAll();}
 
     @GetMapping("/{id}")
     public Experience getExperience(@PathVariable Long id) {
-        return experienceRepository.findById(id).orElseThrow(RuntimeException::new);
+        return experienceRepository.findById(id).orElseThrow(null);
     }
-    @GetMapping("/edit/{id}")
+    @PutMapping("/edit/{id}")
     public Experience updateExperienceById(@RequestBody Experience experience) {
-        experienceRepository.findById(experience.getId());
+        experienceRepository.findById(experience.getId()).orElseThrow(ExperienceNotFoundException::new);
         return experienceRepository.save(experience);
     }
 
@@ -41,9 +38,9 @@ public class ExperienceController {
         return experienceRepository.save(experience);
     }
 
-    @GetMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Experience deleteExperienceById(@PathVariable Long id) {
-        Experience experience = experienceRepository.findById(id).get();
+        Experience experience = experienceRepository.findById(id).orElseThrow(ExperienceNotFoundException::new);
         experienceRepository.deleteById(id);
         return experience;
     }
