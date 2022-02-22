@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping("/api/experiences")
 // NO INCLUIR NUNCA LA CABECERA CrossOrigin en un proyecto real
 @CrossOrigin
+
 public class ExperienceController {
 
     private final ExperienceRepository experienceRepository;
@@ -20,14 +21,16 @@ public class ExperienceController {
     }
 
     @GetMapping
-    public List<Experience> allExperiences() {
+    public List<Experience> allExperiences() {return experienceRepository.findAll();}
 
-        return experienceRepository.findAll();
-
-    }
     @GetMapping("/{id}")
     public Experience getExperience(@PathVariable Long id) {
-        return experienceRepository.findById(id).orElseThrow(RuntimeException::new);
+        return experienceRepository.findById(id).orElseThrow(null);
+    }
+    @PutMapping("/edit/{id}")
+    public Experience updateExperienceById(@RequestBody Experience experience) {
+        experienceRepository.findById(experience.getId()).orElseThrow(ExperienceNotFoundException::new);
+        return experienceRepository.save(experience);
     }
 
     @PostMapping
@@ -35,12 +38,11 @@ public class ExperienceController {
         return experienceRepository.save(experience);
     }
 
-
-    @GetMapping("/experiences/{id}/edit")
-    String editExperience(Model model, @PathVariable Long id) {
-        Experience experience = experienceRepository.findById(id).get();
-        model.addAttribute("experience", experience);
-        model.addAttribute("name", "Edit experience");
-        return "experiences/edit";
+    @DeleteMapping("/delete/{id}")
+    public Experience deleteExperienceById(@PathVariable Long id) {
+        Experience experience = experienceRepository.findById(id).orElseThrow(ExperienceNotFoundException::new);
+        experienceRepository.deleteById(id);
+        return experience;
     }
+
 }
