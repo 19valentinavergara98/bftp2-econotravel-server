@@ -9,7 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/experiences")
 // NO INCLUIR NUNCA LA CABECERA CrossOrigin en un proyecto real
-@CrossOrigin (origins = "http://localhost:3000", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS})
+@CrossOrigin
 
 public class ExperienceController {
 
