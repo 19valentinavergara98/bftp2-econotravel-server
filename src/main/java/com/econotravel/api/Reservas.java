@@ -18,7 +18,7 @@ public class Reservas {
     public Reservas(String nombre, String telefono, int numeroDePersonas, String email, String experiencia, String comentarios){
         this.nombre = nombre;
         this.telefono = telefono;
-        this.numeroDePersonas = adultos;
+        this.numeroDePersonas = numeroDePersonas;
         this.email = email;
         this.experiencia = experiencia;
         this.comentarios = comentarios;
@@ -43,12 +43,12 @@ public class Reservas {
         this.telefono = telefono;
     }
 
-    public int getNumeroDePersonas) {
+    public int getNumeroDePersonas() {
         return numeroDePersonas;
     }
 
-    public void setNumeroDePersonas(int adultos) {
-        this.numeroDePersonas = adultos;
+    public void setNumeroDePersonas(int numeroDePersonas) {
+        this.numeroDePersonas = numeroDePersonas;
     }
 
     public String getEmail() {
