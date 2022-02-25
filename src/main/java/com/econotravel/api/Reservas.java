@@ -9,18 +9,16 @@ public class Reservas {
     private Long id;
     private String nombre;
     private String telefono;
-    private int adultos;
-    private int ninos;
+    private int numeroDePersonas;
     private String email;
     private String experiencia;
     @Lob
     private String comentarios;
 
-    public Reservas(String nombre, String telefono, int adultos, int ninos, String email, String experiencia, String comentarios){
+    public Reservas(String nombre, String telefono, int numeroDePersonas, String email, String experiencia, String comentarios){
         this.nombre = nombre;
         this.telefono = telefono;
-        this.adultos = adultos;
-        this.ninos = ninos;
+        this.numeroDePersonas = adultos;
         this.email = email;
         this.experiencia = experiencia;
         this.comentarios = comentarios;
@@ -45,20 +43,12 @@ public class Reservas {
         this.telefono = telefono;
     }
 
-    public int getAdultos() {
-        return adultos;
+    public int getNumeroDePersonas) {
+        return numeroDePersonas;
     }
 
-    public void setAdultos(int adultos) {
-        this.adultos = adultos;
-    }
-
-    public int getNinos() {
-        return ninos;
-    }
-
-    public void setNinos(int ninos) {
-        this.ninos = ninos;
+    public void setNumeroDePersonas(int adultos) {
+        this.numeroDePersonas = adultos;
     }
 
     public String getEmail() {
